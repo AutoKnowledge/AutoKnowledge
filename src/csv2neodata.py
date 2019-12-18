@@ -44,25 +44,29 @@ print(len(entity))
 # 保存节点文件
 csvf_entity = open(os.getcwd() + "/../data/entity.csv",
                    "w", newline='', encoding='utf-8')
-w_entity = csv.writer(csvf_entity)
+# w_entity = csv.writer(csvf_entity)
 # 实体ID，要求唯一，名称，LABEL标签，可自己不同设定对应的标签
-w_entity.writerow(("entity:ID", "name"))
+# w_entity.writerow(("entity:ID", "name"))
+csvf_entity.write("entity:ID, name"+"\n")
 entity = list(entity)
 entity_dict = {}
 for i in range(len(entity)):
-    w_entity.writerow(("e" + str(i), "<"+str(entity[i])+">"))
+    #w_entity.writerow(("e" + str(i), "\""+str(entity[i])+"\""))
+    csvf_entity.write("e"+str(i)+",<"+entity[i]+">\n")
     entity_dict[entity[i]] = "e"+str(i)
 csvf_entity.close()
 del entity
 csvf_relation = open(os.getcwd() + "/../data/relation.csv",
                      "w", newline='', encoding='utf-8')
-w_relation = csv.writer(csvf_relation)
-w_relation.writerow((":START_ID", ":END_ID", ":TYPE"))
+#w_relation = csv.writer(csvf_relation)
+#w_relation.writerow((":START_ID", ":END_ID", ":TYPE"))
+csvf_relation.write(":START_ID,:END_ID,:TYPE\n")
 for h, t, r in zip(h_r_t[':START_ID'], h_r_t[':END_ID'], h_r_t['role']):
     if t in prop:
         continue
     else:
-        w_relation.writerow((entity_dict[h], entity_dict[t], r))
+        #w_relation.writerow((entity_dict[h], entity_dict[t], r))
+        csvf_relation.write(entity_dict[h]+"," + entity_dict[t]+"," + r+"\n")
 csvf_relation.close()
 '''
 # 生成关系文件，起始实体ID，终点实体ID，要求与实体文件中ID对应，:TYPE即为关系

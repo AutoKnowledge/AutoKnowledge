@@ -5,7 +5,9 @@ for line0 in open(os.getcwd() + "/../data/baike_triples.txt"):
     line = line0.replace("<a>", "").strip()
     line = line.replace("</a>", "")
     line = line.replace("\"\"", "")
-    line = line.replace("\\\"", "\"")
+    line = line.replace("\\\"", "”")
+    line = line.replace("\"", "”")
+    line = line.replace(",", "，")
     triple = line.split('\t')
     if len(triple) != 3:
         print(triple)
