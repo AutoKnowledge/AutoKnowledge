@@ -5,7 +5,7 @@ import csv
 import os
 
 h_r_t = {":START_ID": [], "role": [], ":END_ID": []}
-for line in open(os.getcwd() + "/../data/pure_baike_triples.txt"):
+for line in open(os.getcwd() + "../../data/pure_baike_triples.txt"):
     triple = line.strip().split("\t")
     if len(triple) != 3:
         print(triple)
@@ -34,7 +34,7 @@ for i in entity_t_dict:
 print(len(entity))
 del entity_t_dict
 # 保存节点文件
-csvf_entity = open(os.getcwd() + "/../data/entity.csv",
+csvf_entity = open(os.getcwd() + "../../data/entity.csv",
                    "w", newline='', encoding='utf-8')
 
 csvf_entity.write("entity:ID, name"+"\n")
@@ -45,10 +45,10 @@ for i in range(len(entity)):
     entity_dict[entity[i]] = "e"+str(i)
 csvf_entity.close()
 del entity
-csvf_relation = open(os.getcwd() + "/../data/relation.csv",
+csvf_relation = open(os.getcwd() + "../../data/relation.csv",
                      "w", newline='', encoding='utf-8')
 # csvf_relation.write(":START_ID,:END_ID,:TYPE\n")
-propf = open(os.getcwd() + "/../data/prop.txt", "w")
+propf = open(os.getcwd() + "../../data/prop.txt", "w")
 for h, t, r in zip(h_r_t[':START_ID'], h_r_t[':END_ID'], h_r_t['role']):
     if t in prop:
         propf.write(h+"\t"+r+"\t"+t+"\n")
@@ -56,7 +56,7 @@ for h, t, r in zip(h_r_t[':START_ID'], h_r_t[':END_ID'], h_r_t['role']):
     else:
         csvf_relation.write(entity_dict[h]+"," + entity_dict[t]+"," + r+"\n")
 csvf_relation.close()
-for line0 in open(os.getcwd() + "/../data/baike_triples.txt"):
+for line0 in open(os.getcwd() + "../../data/baike_triples.txt"):
     triple = line0.strip().split("\t")
     if len(triple) != 3 or triple[1] != "BaiduCARD":
         continue

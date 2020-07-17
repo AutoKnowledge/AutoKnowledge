@@ -1,7 +1,7 @@
 import os
-pureBaike = open(os.getcwd() + "/../data/pure_baike_triples.txt", 'w')
+pureBaike = open(os.getcwd() + "../../data/pure_baike_triples.txt", 'w')
 i = 0
-for line0 in open(os.getcwd() + "/../data/baike_triples.txt"):
+for line0 in open(os.getcwd() + "../../data/baike_triples.txt"):
     line = line0.replace("<a>", "").strip()
     line = line.replace("</a>", "")
     line = line.replace("\"\"", "")

@@ -14,7 +14,7 @@ for relation in relationdic_sort:
 relationfile.close()
 '''
 
-relations = np.load(os.getcwd() + "/../data/relationDic.npy")
+relations = np.load(os.getcwd() + "../../data/relationDic.npy")
 level = [1, 10, 100, 1000]
 for i in level:
     count = 0

@@ -13,7 +13,7 @@ currHead = None
 currHeadName = ""
 RelationList = []
 # tx = graph.begin()
-for line0 in open(os.getcwd() + "/../data/baike_triples.txt"):
+for line0 in open(os.getcwd() + "../../data/baike_triples.txt"):
     line = line0.replace("<a>", "").strip()
     line = line.replace("</a>", "")
     triple = line.split("\t")

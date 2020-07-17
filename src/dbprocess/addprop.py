@@ -1,13 +1,13 @@
 import os
 from py2neo import Graph, Node, Relationship, NodeMatcher
 entityDic = dict()
-for line in open(os.getcwd() + "/../data/entity.csv"):
+for line in open(os.getcwd() + "../../data/entity.csv"):
     triple = line.strip().split(",")
     entityDic[triple[1]] = triple[0]
 graph = Graph('http://localhost:7474', username='neo4j', password='123321')
 matcher = NodeMatcher(graph)
 propDic = dict(dict())
-for line in open(os.getcwd() + "/../data/prop1.txt"):
+for line in open(os.getcwd() + "../../data/prop1.txt"):
     triple = line.strip().split("\t")
     if len(triple) != 3:
         triple = line.strip().split(",")
@@ -34,7 +34,7 @@ for index in propDic:
     print(index, count, count/total)
 '''
 count = 0
-for line in open(os.getcwd() + "/../data/prop1.txt"):
+for line in open(os.getcwd() + "../../data/prop1.txt"):
     triple = line.strip().split("\t")
     if len(triple) != 3:
         triple = line.strip().split(",")
