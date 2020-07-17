@@ -1,3 +1,4 @@
+
 # 网页解析器类
 import re
 import urllib
@@ -11,10 +12,10 @@ class HtmpParser(object):
         if html_content is None:
             return
         soup = BeautifulSoup(html_content,'html.parser',from_encoding='utf-8')
-        new_urls = self.get_new_urls(new_url,soup)
+      
         new_datas = self.get_new_datas(new_url,soup)
 
-        return new_urls, new_datas
+        return new_datas
 
 
     # 获取new_urls的方法
@@ -40,13 +41,21 @@ class HtmpParser(object):
         new_datas = {}
         # 获取标题内容
         title_node = soup.find('dd',class_='lemmaWgt-lemmaTitle-title').find('h1')
+        
         new_datas['title'] = title_node.get_text()
 
         #获取内容
         summary_node = soup.find('div',class_='lemma-summary')
-        new_datas['summary'] = summary_node.get_text()
+        if summary_node==None:
+            new_datas['summary'] = '    '
+        else :
+            new_datas['summary'] = summary_node.get_text()
         summary_node = soup.find('div',class_='basic-info cmn-clearfix')
-        new_datas['info'] = summary_node.get_text()
+        if summary_node==None:
+            print("this is none")
+            new_datas['info'] = '    '
+        else :
+            new_datas['info'] = summary_node.get_text()
         new_datas['url'] = new_url
 
         

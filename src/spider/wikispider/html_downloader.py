@@ -1,4 +1,5 @@
-# 读取网页的类
+
+# 读取网页的类d
 import urllib.request
 
 
@@ -14,3 +15,5 @@ class HtmlDownLoader(object):
         if response.getcode() != 200:
             return
         return response.read()
+
+        
